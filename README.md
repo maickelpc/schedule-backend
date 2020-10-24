@@ -15,7 +15,12 @@ Para o funcionamento dessa API é necessário atender os requisitos abaixo:
 ## Configurações Iniciais
 
 1 - Baixar o projeto Lar
+
 2 - Criar o arquivo .env e configurar sessão de banco de dados (DB_) e email (MAIL_)
+
 3 - Rodar o comando "php artisan key:generate" para gerar chave do sistema
+
 4 - Rodar o comando "php artisan jwt:secret" para gerar chave dos tokens de acesso
+
 5 - Rodar o comando "php artisan migrate --seed" para criar a base de dados e popular com os dados básicos
+
