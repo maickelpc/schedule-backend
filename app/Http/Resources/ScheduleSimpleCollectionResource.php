@@ -2,9 +2,10 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+use App\Http\Resources\ScheduleSimpleResource;
 
-class ScheduleSimpleCollectionResource extends JsonResource
+class ScheduleSimpleCollectionResource extends ResourceCollection
 {
     /**
      * Transform the resource into an array.
@@ -14,6 +15,11 @@ class ScheduleSimpleCollectionResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'data' => $this->collection->map(function($item){ return new ScheduleSimpleResource($item); }),
+            'links' => [
+                'self' => 'link-value',
+            ],
+        ];
     }
 }
