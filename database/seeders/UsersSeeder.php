@@ -19,13 +19,13 @@ class UsersSeeder extends Seeder
         User::create([ 
             'name' => 'Jorge', 
             'email' => 'jorge@gmail.com', 
-            'password' => bcrypt('123456')
+            'password' => '123456'
         ]);
 
         $clara = User::create([ 
             'name' => 'Clara', 
             'email' => 'clara@gmail.com', 
-            'password' => bcrypt('123456')
+            'password' => '123456'
         ]);
         
         $roleAdmin = Role::where('name', 'admin')->first();
