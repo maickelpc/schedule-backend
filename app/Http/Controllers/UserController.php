@@ -25,5 +25,5 @@ class UserController extends Controller
         return response()->json(new UserResource($item), 200);
     }
 
-
+    
 }

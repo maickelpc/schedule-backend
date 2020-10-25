@@ -39,4 +39,15 @@ class ScheduleController extends Controller
         }
         
     }
+
+    public function scheduleByUser($id, Request $request){
+        
+        $data = $this->repository->scheduleByUser($id, $request->all());
+
+        if(Auth::check()){
+            return response()->json(new ScheduleCollectionResource($data), 200);
+        }else{
+            return response()->json(new ScheduleSimpleCollectionResource($data), 200);
+        }
+    }
 }
