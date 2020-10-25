@@ -25,7 +25,5 @@ class RolesAndPermissionsSeeder extends Seeder
         // create roles and assign created permissions
         $role = Role::create(['name' => 'admin'])
             ->givePermissionTo(['edit schedules', 'delete schedules']);
-
-    
     }
 }
