@@ -22,7 +22,7 @@ class ScheduleResource extends JsonResource
             'subject' => $this->subject,
             'meeting_agenda' => $this->meeting_agenda,
             'requester' => $this->requester,
-            'participants' => $this->participants->with('user'),
+            'participants' => $this->participants,
             'created_at' => $this->created_at,
             'start_date' => $this->start_date,
             'end_date' => $this->end_date,

@@ -39,7 +39,7 @@ class Schedule extends Model
     }
 
     public function participants(){
-        return $this->hasMany('App\Models\Participant');
+        return $this->hasMany('App\Models\Participant')->with('user');
     }
 
     public function users(){

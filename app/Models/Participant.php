@@ -32,7 +32,7 @@ class Participant extends Model
         return $this->belongsTo('App\Models\Schedule', 'schedule_id');
     }
 
-    public function schedules(){
-        return $this->hasManyThrough('App\Models\Schedule', 'App\Models\Participant');
-    }
+    // public function schedules(){
+    //     return $this->hasManyThrough('App\Models\Schedule', 'App\Models\Participant');
+    // }
 }
