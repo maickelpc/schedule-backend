@@ -10,6 +10,12 @@ use Illuminate\Pagination\AbstractPaginator as Paginator;
 interface IRepository
 {
   
+    public function create($attributes);
+    
+    public function update($id,$attributes);
+
+    public function delete($id);
+
     public function getAll($take, $paginate);
 
     public function find($id, $fail);

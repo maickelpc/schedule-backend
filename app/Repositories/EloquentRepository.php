@@ -20,9 +20,9 @@ abstract class EloquentRepository implements IRepository
    * @param array $attributes
    * @return Model
    */
-  protected function create($attributes)
+  public function create($attributes)
   {
-    return app($this->modelClass)::create($attributes);
+     return $this->newQuery()->create($attributes);
   }
 
   /**
@@ -30,7 +30,7 @@ abstract class EloquentRepository implements IRepository
    * @param array $attributes
    * @return Model
    */
-  protected function update($id,$attributes)
+  public function update($id,$attributes)
   {
     return $this->newQuery()->where('id', $id)->update($attributes);
   }
@@ -39,7 +39,7 @@ abstract class EloquentRepository implements IRepository
    * @param int $id
    * @return Model
    */
-  protected function delete($id)
+  public function delete($id)
   {
     $item = $this->find($id, true);
     $item->delete();
