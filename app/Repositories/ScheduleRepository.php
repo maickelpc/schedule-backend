@@ -3,7 +3,8 @@
 namespace App\Repositories;
 
 use Carbon\Carbon;
-use App\Models\User;
+use Auth;
+use App\Repositories\ParticipantRepository;
 
 class ScheduleRepository extends EloquentRepository
 {
@@ -34,6 +35,29 @@ class ScheduleRepository extends EloquentRepository
     }
     
     return $query->get();
+  }
+
+
+  public function createSchedule($user_id, $data){
+
+    if(!isset($data['end_date'])){
+      $data['end_date'] = Carbon::create($data['start_date'])->add(1,'hours');
+    }
+    if(Auth::check()){
+      $data['requester_id'] = Auth::user()->id;
+    }
+    $schedule = $this->create($data);
+
+    $participantRepository = new ParticipantRepository();
+
+    $participant = [
+      'user_id' => $user_id,
+      'schedule_id' => $schedule->id
+    ];
+    $participantRepository->create($participant);
+
+    return $schedule;
+
   }
 
 }

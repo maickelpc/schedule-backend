@@ -16,7 +16,7 @@ class CreateSchedulesTable extends Migration
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
             $table->string('client_name',100);
-            $table->string('client_email',100);
+            $table->string('client_email',200);
             $table->string('client_phone',20)->nullable();
             $table->string('subject',50);
             $table->text('meeting_agenda');

@@ -9,6 +9,9 @@ use App\Http\Resources\ScheduleResource;
 use App\Http\Resources\ScheduleSimpleResource;
 use App\Http\Resources\ScheduleCollectionResource;
 use App\Http\Resources\ScheduleSimpleCollectionResource;
+use App\Http\Requests\CreateScheduleRequest;
+use App\Mail\SendMailNewSchedule;
+use Mail;
 
 class ScheduleController extends Controller
 {
@@ -49,5 +52,15 @@ class ScheduleController extends Controller
         }else{
             return response()->json(new ScheduleSimpleCollectionResource($data), 200);
         }
+    }
+
+    public function createSchedule($id, CreateScheduleRequest $request){
+        
+        $schedule = $this->repository->createSchedule($id, $request->all());
+        $schedule->participants = $schedule->participants;
+
+        Mail::send(new SendMailNewSchedule($schedule));
+
+        return response()->json($schedule, 400);
     }
 }
